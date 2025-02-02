@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.env
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+
+# Track folders but ignore JSON files for all projects
+**/landing_zone/raw_data/**/*.json
+!**/landing_zone/raw_data/
+!**/landing_zone/raw_data/**/
+!**/landing_zone/raw_data/**/.gitkeep
+
+# Logs
+*.log
+
+# Optional: Create .gitkeep files to track empty folders
+!.gitkeep

@@ -1,0 +1,5 @@
+# Run tests
+pytest tests/
+
+# Try running the collector
+python -m landing_zone.collectors.seattle_weather_collector

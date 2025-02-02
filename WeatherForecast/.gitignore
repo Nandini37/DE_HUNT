@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.env
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+
+# Data
+landing_zone/raw_data/*
+!landing_zone/raw_data/.gitkeep
+
+# Logs
+*.log
+
+# Ignore all JSON files
+*.json
+
+# Optional: If you want to ignore JSON files in all subdirectories
+**/*.json

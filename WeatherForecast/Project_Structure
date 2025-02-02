@@ -1,0 +1,25 @@
+seattle_weather_pipeline/
+├── landing_zone/
+│   ├── collectors/
+│   │   └── seattle_weather_collector.py
+│   └── raw_data/
+│       ├── observations/
+│       ├── forecasts/
+│       ├── alerts/
+│       └── stations/
+├── tests/
+│   ├── __init__.py
+│   └── test_weather_collector.py
+├── config/
+│   ├── __init__.py
+│   └── settings.py
+├── utils/
+│   ├── __init__.py
+│   └── logger.py
+├── requirements/
+│   ├── base.txt
+│   ├── dev.txt
+│   └── prod.txt
+├── README.md
+├── setup.py
+└── .env

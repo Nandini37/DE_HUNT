@@ -1,5 +1,8 @@
-# Ignore all JSON files
+# Ignore all JSON files but keep folders
 *.json
 
-# Optional: If you want to ignore JSON files in all subdirectories
-**/*.json 
+# Keep the folder structure but ignore JSON files in all subdirectories
+**/*.json
+
+# Optional: Create .gitkeep files to track empty folders
+!.gitkeep 

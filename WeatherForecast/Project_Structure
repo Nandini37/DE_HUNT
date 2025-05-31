@@ -7,6 +7,16 @@ seattle_weather_pipeline/
 │       ├── forecasts/
 │       ├── alerts/
 │       └── stations/
+├── staging/
+│   └── models/
+│       └── staging_weather_data.sql
+├── intermediate/
+│   └── models/
+│       └── intermediate_weather_data.sql
+├── mart/
+│   └── models/
+│       └── mart_weather_data.sql
+├── dbt_project.yml
 ├── tests/
 │   ├── __init__.py
 │   └── test_weather_collector.py

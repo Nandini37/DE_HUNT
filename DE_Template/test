@@ -1,0 +1,19 @@
+# Create a parser instance
+parser = CSVParser()
+
+# Read from a local file
+df = parser.read_csv('path/to/your/file.csv', source_type='local')
+
+# Read from a URL
+df = parser.read_csv('https://example.com/data.csv', source_type='url')
+
+# Read from a string
+csv_string = "name,age\nJohn,30\nAlice,25"
+df = parser.read_csv(csv_string, source_type='string')
+
+# Get basic statistics
+stats = parser.get_basic_stats()
+print(stats)
+
+# Save to a new CSV file
+parser.save_csv('output.csv')

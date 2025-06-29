@@ -25,4 +25,4 @@ ENV/
 *.log
 
 # Optional: Create .gitkeep files to track empty folders
-!.gitkeep
+!.gitkeep.DS_Store

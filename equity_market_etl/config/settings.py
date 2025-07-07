@@ -7,3 +7,8 @@ DB_CONFIG = {
     "password": os.getenv("DB_PASSWORD", "password"),
     "database": os.getenv("DB_NAME", "equity_market_dev"),
 }
+
+# List of tickers to process
+tickers = ["CL=F"]
+# Data frequency (e.g., '1d' for daily, '1h' for hourly)
+data_frequency = "1d"

@@ -15,12 +15,12 @@ This project implements a robust, modular ETL pipeline for ingesting, transformi
 - Implement connectors for chosen data sources (APIs, SFTP, etc.)
 - Support for multiple frequencies (daily, hourly, minute)
 - Handle missing data, retries, and logging
-- Store raw data in a landing zone or staging area
+- Store raw data in a landing zone or staging area 
 
 ### 3. Data Validation & Quality
 - Validate schema, data types, and completeness
 - Implement anomaly detection (e.g., outlier prices, volume spikes)
-- Log and alert on data quality issues
+- Log and alert on data quality issues 
 
 ### 4. Data Transformation
 - Compute technical indicators (SMA, EMA, RSI, MACD, etc.)

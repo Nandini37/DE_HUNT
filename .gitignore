@@ -26,3 +26,5 @@ ENV/
 
 # Optional: Create .gitkeep files to track empty folders
 !.gitkeep.DS_Store
+
+**/Inventory_ageing/**

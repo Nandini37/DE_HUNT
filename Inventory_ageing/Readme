@@ -1,0 +1,75 @@
+# Inventory Ageing
+
+This project provides code to calculate inventory surplus and deficit over defined time buckets. The inventory ageing logic helps identify periods of surplus or deficit, enabling better inventory management and decision-making.
+
+## Features
+
+- Calculates inventory ageing using customizable time buckets (e.g., 0-30, 31-60, 61-90 days, etc.).
+- Identifies surplus and deficit quantities for each period.
+- Outputs results in a structured format for further analysis or reporting.
+
+
+##Assumption: 
+
+Following are the column names in our mrt_inventory_ageing_raw. You can create a sample data around this. 
+
+column_name
+MATERIAL_ID
+MATERIAL_DESCRIPTION
+PLANT_ID
+PLANT_NAME
+BASE_UNIT_OF_MEASURE
+UNIT
+STORAGE_LOCATION
+BATCH_NUMBER
+STOCK_QTY
+STOCK_VALUE
+DAYS_0_TO_30_QUANTITY
+DAYS_0_TO_30
+DAYS_31_TO_60_QUANTITY
+DAYS_31_TO_60
+DAYS_61_TO_90_QUANTITY
+DAYS_61_TO_90
+DAYS_91_TO_120_QUANTITY
+DAYS_91_TO_120
+DAYS_121_TO_180_QUANTITY
+DAYS_121_TO_180
+DAYS_181_TO_365_QUANTITY
+DAYS_181_TO_365
+OVER_1_YEAR_QUANTITY
+OVER_1_YEAR_VALUE
+
+## Usage
+
+1. **Input Data**:  
+   The model expects input data with columns such as `MATERIAL_ID`, `PLANT_ID`, `STORAGE_LOCATION`, `BATCH_NUMBER`, and quantity fields for each time bucket.
+
+2. **Processing**:  
+   The Python model processes the data to compute surplus/deficit for each bucket and aggregates totals.
+
+3. **Output**:  
+   The output includes:
+   - Quantity and value for each ageing bucket
+   - Total stock quantity and value
+   - Material and location details
+
+## Example
+
+The output table includes columns like:
+- `DAYS_0_TO_30_QUANTITY`, `DAYS_0_TO_30`
+- `DAYS_31_TO_60_QUANTITY`, `DAYS_31_TO_60`
+- ...
+- `OVER_1_YEAR_QUANTITY`, `OVER_1_YEAR_VALUE`
+- `STOCK_QTY`, `STOCK_VALUE`
+
+## Purpose
+
+By analyzing inventory ageing, organizations can:
+- Identify slow-moving or excess stock
+- Optimize procurement and storage
+- Reduce holding costs and improve cash flow
+
+---
+
+Feel free to further customize this README with specific instructions, examples, or contact information as needed! 
+

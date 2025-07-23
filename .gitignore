@@ -28,5 +28,4 @@ ENV/
 !.gitkeep.DS_Store
 
 
-#Ignore Iventory_Ageing
-**/Inventory_ageing/**
+

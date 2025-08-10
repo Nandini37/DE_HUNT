@@ -1,29 +1,23 @@
-
-
-
-
-# --- Data Dump ---
-
 import yfinance as yf
-import pandas as pd
-from config.settings import tickers, data_frequency
-from indicators.technicals import add_all_indicators
 from db.postgres import write_dataframe
-import re
+import pandas as pd
 
-def sanitize_table_name(ticker):
-    # Lowercase, replace non-alphanumeric with _
-    return f"ohlcv_{re.sub(r'[^a-zA-Z0-9]', '_', ticker.lower())}"
 
-def run_etl(ticker):
-    print(f"Processing {ticker}...")
-    data = yf.download(ticker, interval=data_frequency)
+def main():
+# Get symbol OHLC data
+    data = yf.download("CL=F")
+
+    # Reset index to move Date from index to column
     data = data.reset_index()
+
+    # Flatten columns if MultiIndex
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = [col[0] for col in data.columns]
-    raw_data = data.copy()
-    return raw_data, data
 
+    # Dump to PostgreSQL
+    table_name = "ohlcv_crude_oil_futures"
+    write_dataframe(data, table_name)
+    print(f"Data written to {table_name}")
 
 
 

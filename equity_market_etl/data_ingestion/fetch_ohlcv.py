@@ -1,4 +1,7 @@
 
+
+
+
 # --- Data Dump ---
 
 import yfinance as yf
@@ -20,6 +23,8 @@ def run_etl(ticker):
         data.columns = [col[0] for col in data.columns]
     raw_data = data.copy()
     return raw_data, data
+
+
 
 
 

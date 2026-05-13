@@ -30,5 +30,3 @@ def add_all_indicators(df: pd.DataFrame, price_col: str = 'Close') -> pd.DataFra
     df = add_rsi(df, 14, price_col)
     df = add_macd(df, 12, 26, price_col)
     return df
-
-

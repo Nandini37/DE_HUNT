@@ -25,8 +25,15 @@ ENV/
 *.log
 
 # Optional: Create .gitkeep files to track empty folders
+<<<<<<< HEAD
 !.gitkeep
 
 # Folder
 AZURE/
 .DS_Store
+=======
+!.gitkeep.DS_Store
+
+
+
+>>>>>>> caefb19cd268c9480b703a98ad48724caf62ea2a

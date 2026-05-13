@@ -87,7 +87,8 @@ def query_top_accounts(sf: Salesforce, limit: int = 100) -> dict:
 def main() -> None:
     sf = connect_salesforce()
     out = query_top_accounts(sf, 100)
-    print(f"done: {out['totalSize']} record(s) (queryLocator empty = single page)")
+    total = out.get('totalSize', 0)
+    print(f"done: {total} record(s) (queryLocator empty = single page)")
     for row in out.get("records", []):
         row = {k: v for k, v in row.items() if k != "attributes"}
         print(row)

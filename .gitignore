@@ -26,3 +26,7 @@ ENV/
 
 # Optional: Create .gitkeep files to track empty folders
 !.gitkeep
+
+# Folder
+AZURE/
+.DS_Store

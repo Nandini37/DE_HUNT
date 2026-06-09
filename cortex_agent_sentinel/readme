@@ -1,0 +1,7 @@
+Structure — modelled on pdf/ and pptx/:
+
+SKILL.md is the entry point only — frontmatter, routing table, agent rules, and the workflow diagram. Claude reads this first on every trigger.
+Each page is a focused directive document for one concern. Claude loads only what it needs for the current step.
+
+The 7 pages and what each one tells the agent to do:
+image.png

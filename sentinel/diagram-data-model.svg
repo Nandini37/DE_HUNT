@@ -11,7 +11,7 @@
 
   <rect width="900" height="520" fill="#F8FAFC"/>
 
-  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Data Model  Tables &amp; Relationships</text>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Data Model - Tables &amp; Relationships</text>
   <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">What each table stores and how they connect</text>
 
   <!-- Source tables -->
@@ -60,7 +60,7 @@
   <!-- AGENT_FIX_PROPOSALS -->
   <rect x="660" y="250" width="200" height="120" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
   <text x="760" y="274" text-anchor="middle" font-size="11" font-weight="700" fill="#065F46">AGENT_FIX_PROPOSALS</text>
-  <text x="760" y="292" text-anchor="middle" font-size="9" fill="#047857">Approved � immutable</text>
+  <text x="760" y="292" text-anchor="middle" font-size="9" fill="#047857">Approved - immutable</text>
   <line x1="680" y1="302" x2="840" y2="302" stroke="#A7F3D0"/>
   <text x="680" y="318" font-size="8" fill="#047857">PROPOSAL_ID (PK)</text>
   <text x="680" y="332" font-size="8" fill="#047857">SUGGESTION_ID (FK)</text>
@@ -81,15 +81,15 @@
 
   <rect x="60" y="438" width="100" height="24" rx="4" fill="#FEF3C7" stroke="#D97706"/>
   <text x="110" y="454" text-anchor="middle" font-size="9" fill="#92400E">DRAFT</text>
-  <text x="170" y="454" font-size="12" fill="#94A3B8">�</text>
+  <text x="170" y="454" font-size="12" fill="#94A3B8">→</text>
   <rect x="180" y="438" width="100" height="24" rx="4" fill="#D1FAE5" stroke="#059669"/>
   <text x="230" y="454" text-anchor="middle" font-size="9" fill="#065F46">APPROVED</text>
-  <text x="290" y="454" font-size="12" fill="#94A3B8">�</text>
+  <text x="290" y="454" font-size="12" fill="#94A3B8">→</text>
   <rect x="300" y="438" width="100" height="24" rx="4" fill="#DBEAFE" stroke="#2563EB"/>
   <text x="350" y="454" text-anchor="middle" font-size="9" fill="#1D4ED8">APPLIED</text>
 
-  <text x="60" y="480" font-size="9" fill="#64748B">DRAFT lives in SUGGESTIONS � APPROVED/APPLIED live in PROPOSALS</text>
-  <text x="60" y="494" font-size="9" fill="#DC2626">Reject at DRAFT � row deleted, never reaches PROPOSALS</text>
+  <text x="60" y="480" font-size="9" fill="#64748B">DRAFT lives in SUGGESTIONS - APPROVED/APPLIED live in PROPOSALS</text>
+  <text x="60" y="494" font-size="9" fill="#DC2626">Reject at DRAFT - row deleted, never reaches PROPOSALS</text>
 
-  <text x="450" y="512" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �3 Table DDL � 2026-06-17</text>
+  <text x="450" y="512" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md #3 Table DDL - 2026-06-17</text>
 </svg>

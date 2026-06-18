@@ -20,8 +20,8 @@
 
   <rect width="900" height="620" fill="#F8FAFC"/>
 
-  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Two-Table Design  Suggestion Lifecycle</text>
-  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">Drafts live in SUGGESTIONS � Approved plans live in PROPOSALS</text>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Two-Table Design - Suggestion Lifecycle</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">Drafts live in SUGGESTIONS - Approved plans live in PROPOSALS</text>
 
   <!-- Start -->
   <rect x="50" y="100" width="160" height="56" rx="6" fill="#1E293B" stroke="#475569" filter="url(#shadow)"/>
@@ -34,7 +34,7 @@
   <!-- AGENT_SUGGESTIONS -->
   <rect x="250" y="88" width="200" height="80" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#shadow)"/>
   <text x="350" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">AGENT_SUGGESTIONS</text>
-  <text x="350" y="130" text-anchor="middle" font-size="10" fill="#78350F">Working drafts � revisable</text>
+  <text x="350" y="130" text-anchor="middle" font-size="10" fill="#78350F">Working drafts - revisable</text>
   <text x="350" y="146" text-anchor="middle" font-size="10" fill="#78350F">STATUS = DRAFT</text>
   <text x="350" y="162" text-anchor="middle" font-size="9" fill="#B45309">Overwritten on each revision</text>
 
@@ -43,8 +43,8 @@
 
   <rect x="490" y="88" width="180" height="80" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2" filter="url(#shadow)"/>
   <text x="580" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#5B21B6">Human reviews</text>
-  <text x="580" y="130" text-anchor="middle" font-size="10" fill="#6D28D9">Teams � Streamlit � SQL</text>
-  <text x="580" y="146" text-anchor="middle" font-size="10" fill="#6D28D9">Approve � Reject � Revise</text>
+  <text x="580" y="130" text-anchor="middle" font-size="10" fill="#6D28D9">Teams - Streamlit - SQL</text>
+  <text x="580" y="146" text-anchor="middle" font-size="10" fill="#6D28D9">Approve - Reject - Revise</text>
 
   <!-- Three decision branches -->
   <line x1="580" y1="168" x2="580" y2="210" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
@@ -72,7 +72,7 @@
 
   <rect x="732" y="200" width="148" height="60" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
   <text x="806" y="222" text-anchor="middle" font-size="11" font-weight="600" fill="#065F46">Approve</text>
-  <text x="806" y="238" text-anchor="middle" font-size="9" fill="#047857">INSERT � PROPOSALS</text>
+  <text x="806" y="238" text-anchor="middle" font-size="9" fill="#047857">INSERT - PROPOSALS</text>
   <text x="806" y="252" text-anchor="middle" font-size="9" fill="#047857">DELETE from SUGGESTIONS</text>
 
   <!-- AGENT_FIX_PROPOSALS -->
@@ -82,15 +82,15 @@
   <text x="806" y="336" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">AGENT_FIX_PROPOSALS</text>
   <text x="806" y="354" text-anchor="middle" font-size="10" fill="#047857">Approved plans only</text>
   <text x="806" y="370" text-anchor="middle" font-size="10" fill="#047857">Immutable once inserted</text>
-  <text x="806" y="386" text-anchor="middle" font-size="9" fill="#059669">STATUS: APPROVED � APPLIED</text>
+  <text x="806" y="386" text-anchor="middle" font-size="9" fill="#059669">STATUS: APPROVED - APPLIED</text>
 
   <!-- Execute -->
   <line x1="806" y1="392" x2="806" y2="430" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
 
   <rect x="706" y="432" width="200" height="64" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
   <text x="806" y="454" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">TASK_EXECUTE_FIXES</text>
-  <text x="806" y="472" text-anchor="middle" font-size="10" fill="#64748B">Agent � Bug + PR</text>
-  <text x="806" y="488" text-anchor="middle" font-size="9" fill="#64748B">BUG_ID � PR_URL set</text>
+  <text x="806" y="472" text-anchor="middle" font-size="10" fill="#64748B">Agent - Bug + PR</text>
+  <text x="806" y="488" text-anchor="middle" font-size="9" fill="#64748B">BUG_ID - PR_URL set</text>
 
   <!-- Comparison table -->
   <rect x="50" y="320" width="520" height="200" rx="8" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
@@ -125,5 +125,5 @@
   <text x="180" y="506" text-anchor="middle" font-size="9" fill="#78350F">REVISION_COUNT, FIX_CODE</text>
   <text x="430" y="506" text-anchor="middle" font-size="9" fill="#047857">BUG_ID, PR_URL, APPLIED_AT</text>
 
-  <text x="450" y="560" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �23 � 2026-06-17</text>
+  <text x="450" y="560" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md #23 - 2026-06-17</text>
 </svg>

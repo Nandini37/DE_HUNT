@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 980" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94A3B8"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="980" fill="#F8FAFC"/>
+
+  <text x="360" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Implementation Roadmap</text>
+  <text x="360" y="58" text-anchor="middle" font-size="12" fill="#64748B">9 phases � ~27 hours (~3.5 dev days)</text>
+
+  <!-- Phase 1 -->
+  <rect x="40" y="78" width="640" height="88" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#166534">Phase 1  Tables</text>
+  <text x="360" y="118" text-anchor="middle" font-size="10" fill="#15803D">Create data layer � 1 hr</text>
+  <rect x="60" y="128" width="180" height="28" rx="4" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="150" y="146" text-anchor="middle" font-size="9" fill="#166534">AGENT_ALERTS</text>
+  <rect x="260" y="128" width="200" height="28" rx="4" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="360" y="146" text-anchor="middle" font-size="9" fill="#166534">AGENT_SUGGESTIONS</text>
+  <rect x="480" y="128" width="180" height="28" rx="4" fill="#FFFFFF" stroke="#86EFAC"/>
+  <text x="570" y="146" text-anchor="middle" font-size="9" fill="#166534">AGENT_FIX_PROPOSALS</text>
+  <line x1="360" y1="166" x2="360" y2="186" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 2 -->
+  <rect x="40" y="188" width="640" height="72" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#1D4ED8">Phase 2  Query Tool</text>
+  <text x="360" y="228" text-anchor="middle" font-size="10" fill="#2563EB">SP_QUERY_JOBS � 2.5 hrs � Depends on: tables</text>
+  <rect x="200" y="236" width="320" height="20" rx="4" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="360" y="250" text-anchor="middle" font-size="9" fill="#1E40AF">Returns JSON: failures, long-running, data quality gaps</text>
+  <line x1="360" y1="260" x2="360" y2="280" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 3 -->
+  <rect x="40" y="282" width="640" height="72" rx="10" fill="#EFF6FF" stroke="#0078D4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="306" text-anchor="middle" font-size="13" font-weight="700" fill="#0078D4">Phase 3  Teams Alert</text>
+  <text x="360" y="322" text-anchor="middle" font-size="10" fill="#0369A1">SP_SEND_TEAMS_ALERT � 1.5 hrs � Depends on: TEAMS_INTEGRATION</text>
+  <rect x="200" y="330" width="320" height="20" rx="4" fill="#FFFFFF" stroke="#7DD3FC"/>
+  <text x="360" y="344" text-anchor="middle" font-size="9" fill="#0C4A6E">Python SP � webhook � CRITICAL / WARNING / INFO</text>
+  <line x1="360" y1="354" x2="360" y2="374" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 4 -->
+  <rect x="40" y="376" width="640" height="88" rx="10" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="400" text-anchor="middle" font-size="13" font-weight="700" fill="#C2410C">Phase 4  Azure DevOps EAI</text>
+  <text x="360" y="416" text-anchor="middle" font-size="10" fill="#EA580C">Network rules + secrets + integration � 1.75 hrs � ACCOUNTADMIN</text>
+  <rect x="60" y="426" width="140" height="28" rx="4" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="130" y="444" text-anchor="middle" font-size="8" fill="#9A3412">Network rule</text>
+  <rect x="220" y="426" width="140" height="28" rx="4" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="290" y="444" text-anchor="middle" font-size="8" fill="#9A3412">PAT secret</text>
+  <rect x="380" y="426" width="140" height="28" rx="4" fill="#FFFFFF" stroke="#FDBA74"/>
+  <text x="450" y="444" text-anchor="middle" font-size="8" fill="#9A3412">EAI grant</text>
+  <rect x="540" y="426" width="120" height="28" rx="4" fill="#FEF2F2" stroke="#EF4444"/>
+  <text x="600" y="444" text-anchor="middle" font-size="8" fill="#DC2626">� Blocker if no admin</text>
+  <line x1="360" y1="464" x2="360" y2="484" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 5 -->
+  <rect x="40" y="486" width="640" height="88" rx="10" fill="#EFF6FF" stroke="#0078D4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="510" text-anchor="middle" font-size="13" font-weight="700" fill="#0078D4">Phase 5  Bug + PR Tools</text>
+  <text x="360" y="526" text-anchor="middle" font-size="10" fill="#0369A1">SP_CREATE_AZURE_DEVOPS_BUG + SP_GIT_CREATE_PR � 6 hrs</text>
+  <rect x="120" y="536" width="220" height="28" rx="4" fill="#FFFFFF" stroke="#7DD3FC"/>
+  <text x="230" y="554" text-anchor="middle" font-size="9" fill="#0C4A6E">CreateBug � work items</text>
+  <rect x="380" y="536" width="220" height="28" rx="4" fill="#FFFFFF" stroke="#7DD3FC"/>
+  <text x="490" y="554" text-anchor="middle" font-size="9" fill="#0C4A6E">GitCreatePR � branch + commit + PR</text>
+  <line x1="360" y1="574" x2="360" y2="594" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 6 -->
+  <rect x="40" y="596" width="640" height="100" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="620" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">Phase 6  Detection SPs</text>
+  <text x="360" y="636" text-anchor="middle" font-size="10" fill="#D97706">Orchestration stored procedures � 5.5 hrs</text>
+  <rect x="60" y="646" width="180" height="28" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="150" y="664" text-anchor="middle" font-size="8" fill="#92400E">SP_DETECT_AND_ALERT</text>
+  <rect x="260" y="646" width="200" height="28" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="360" y="664" text-anchor="middle" font-size="8" fill="#92400E">SP_POLL_PENDING_SUGGESTIONS</text>
+  <rect x="480" y="646" width="180" height="28" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="570" y="664" text-anchor="middle" font-size="8" fill="#92400E">SP_EXECUTE_APPROVED_FIXES</text>
+  <line x1="360" y1="696" x2="360" y2="716" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 7 -->
+  <rect x="40" y="718" width="640" height="72" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="742" text-anchor="middle" font-size="13" font-weight="700" fill="#F8FAFC">Phase 7  Cortex Agent</text>
+  <text x="360" y="758" text-anchor="middle" font-size="10" fill="#94A3B8">JOB_MONITOR_AGENT + CoWork testing � 4.25 hrs � Depends on: all SPs</text>
+  <rect x="200" y="766" width="320" height="20" rx="4" fill="#334155" stroke="#64748B"/>
+  <text x="360" y="780" text-anchor="middle" font-size="9" fill="#CBD5E1">Grant CORTEX_USER roles � wire 5 tools � test in CoWork</text>
+  <line x1="360" y1="790" x2="360" y2="810" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 8 -->
+  <rect x="40" y="812" width="640" height="72" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="360" y="836" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">Phase 8  Snowflake Tasks</text>
+  <text x="360" y="852" text-anchor="middle" font-size="10" fill="#D97706">Schedule + resume � 1.75 hrs</text>
+  <rect x="80" y="860" width="160" height="20" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="160" y="874" text-anchor="middle" font-size="8" fill="#92400E">TASK_DETECT_FAILURES (60m)</text>
+  <rect x="280" y="860" width="160" height="20" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="360" y="874" text-anchor="middle" font-size="8" fill="#92400E">TASK_POLL_APPROVALS (2h)</text>
+  <rect x="480" y="860" width="160" height="20" rx="4" fill="#FFFFFF" stroke="#FCD34D"/>
+  <text x="560" y="874" text-anchor="middle" font-size="8" fill="#92400E">TASK_EXECUTE_FIXES (30m)</text>
+  <line x1="360" y1="884" x2="360" y2="904" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Phase 9 -->
+  <rect x="40" y="906" width="640" height="52" rx="10" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text x="360" y="930" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Phase 9  End-to-End Test</text>
+  <text x="360" y="948" text-anchor="middle" font-size="10" fill="#047857">Simulate failure � draft � approve � bug + PR � 4 hrs</text>
+
+  <text x="360" y="972" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �8 � Quick start: Phase 1 first</text>
+</svg>

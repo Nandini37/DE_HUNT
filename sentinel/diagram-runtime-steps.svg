@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1100" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="1100" fill="#F8FAFC"/>
+
+  <text x="360" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Runtime Flow  Step by Step</text>
+  <text x="360" y="58" text-anchor="middle" font-size="12" fill="#64748B">What happens from job failure to pull request</text>
+
+  <!-- Phase A -->
+  <rect x="30" y="78" width="660" height="32" rx="6" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="360" y="99" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">PHASE A  Detect &amp; Draft (Task 1 � every 60 min)</text>
+
+  <!-- Step 1 -->
+  <circle cx="70" cy="140" r="16" fill="#D97706"/>
+  <text x="70" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">1</text>
+  <rect x="100" y="118" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="116" y="138" font-size="12" font-weight="600" fill="#334155">TASK_DETECT_FAILURES fires</text>
+  <text x="116" y="154" font-size="10" fill="#64748B">Snowflake task calls SP_DETECT_AND_ALERT()</text>
+  <line x1="360" y1="162" x2="360" y2="178" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2 -->
+  <circle cx="70" cy="200" r="16" fill="#D97706"/>
+  <text x="70" y="205" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">2</text>
+  <rect x="100" y="178" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="116" y="198" font-size="12" font-weight="600" fill="#334155">Query source tables for issues</text>
+  <text x="116" y="214" font-size="10" fill="#64748B">JOB_CONTROL_LOG � LOG_STEPS � DATA_AUDIT_LOG</text>
+  <line x1="360" y1="222" x2="360" y2="238" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3 -->
+  <circle cx="70" cy="260" r="16" fill="#D97706"/>
+  <text x="70" y="265" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">3</text>
+  <rect x="100" y="238" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="116" y="258" font-size="12" font-weight="600" fill="#334155">Log alert � AGENT_ALERTS</text>
+  <text x="116" y="274" font-size="10" fill="#64748B">Record failure count, severity, and message</text>
+  <line x1="360" y1="282" x2="360" y2="298" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4 -->
+  <circle cx="70" cy="320" r="16" fill="#D97706"/>
+  <text x="70" y="325" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">4</text>
+  <rect x="100" y="298" width="570" height="44" rx="6" fill="#1E293B" stroke="#475569" filter="url(#shadow)"/>
+  <text x="116" y="318" font-size="12" font-weight="600" fill="#F8FAFC">Invoke JOB_MONITOR_AGENT</text>
+  <text x="116" y="334" font-size="10" fill="#94A3B8">DATA_AGENT_RUN() � agent uses QueryJobs + code_execution</text>
+  <line x1="360" y1="342" x2="360" y2="358" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 5 -->
+  <circle cx="70" cy="380" r="16" fill="#D97706"/>
+  <text x="70" y="385" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">5</text>
+  <rect x="100" y="358" width="570" height="44" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="378" font-size="12" font-weight="600" fill="#92400E">Agent saves draft � AGENT_SUGGESTIONS</text>
+  <text x="116" y="394" font-size="10" fill="#78350F">Root cause, proposed fix, fix code � STATUS = DRAFT</text>
+  <line x1="360" y1="402" x2="360" y2="418" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 6 -->
+  <circle cx="70" cy="440" r="16" fill="#D97706"/>
+  <text x="70" y="445" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">6</text>
+  <rect x="100" y="418" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="438" font-size="12" font-weight="600" fill="#0078D4">Immediate Teams alert sent</text>
+  <text x="116" y="454" font-size="10" fill="#64748B">"X jobs failed" via SP_SEND_TEAMS_ALERT</text>
+
+  <!-- Phase B -->
+  <rect x="30" y="488" width="660" height="32" rx="6" fill="#EDE9FE" stroke="#7C3AED"/>
+  <text x="360" y="509" text-anchor="middle" font-size="12" font-weight="700" fill="#5B21B6">PHASE B  Review &amp; Approve (Task 2 � every 2 hrs + human)</text>
+
+  <line x1="360" y1="462" x2="360" y2="488" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 7 -->
+  <circle cx="70" cy="550" r="16" fill="#7C3AED"/>
+  <text x="70" y="555" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">7</text>
+  <rect x="100" y="528" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="548" font-size="12" font-weight="600" fill="#B45309">TASK_POLL_APPROVALS bundles drafts</text>
+  <text x="116" y="564" font-size="10" fill="#64748B">SP_POLL_PENDING_SUGGESTIONS() � Teams message with [Approve] [Reject]</text>
+  <line x1="360" y1="572" x2="360" y2="588" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 8 -->
+  <circle cx="70" cy="610" r="16" fill="#7C3AED"/>
+  <text x="70" y="615" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">8</text>
+  <rect x="100" y="588" width="570" height="56" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="608" font-size="12" font-weight="600" fill="#5B21B6">Human decides (Teams � Streamlit � SQL)</text>
+  <text x="116" y="624" font-size="10" fill="#6D28D9">Revise � agent UPDATES same row in AGENT_SUGGESTIONS (revision_count++)</text>
+  <text x="116" y="638" font-size="10" fill="#6D28D9">Reject � DELETE from AGENT_SUGGESTIONS � Approve � move to proposals</text>
+  <line x1="360" y1="644" x2="360" y2="660" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 9 -->
+  <circle cx="70" cy="682" r="16" fill="#7C3AED"/>
+  <text x="70" y="687" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">9</text>
+  <rect x="100" y="660" width="570" height="44" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="680" font-size="12" font-weight="600" fill="#065F46">Approved plan � AGENT_FIX_PROPOSALS</text>
+  <text x="116" y="696" font-size="10" fill="#047857">INSERT into proposals � DELETE from suggestions � immutable record</text>
+
+  <!-- Phase C -->
+  <rect x="30" y="730" width="660" height="32" rx="6" fill="#D1FAE5" stroke="#059669"/>
+  <text x="360" y="751" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">PHASE C  Execute (Task 3 � every 30 min)</text>
+
+  <line x1="360" y1="704" x2="360" y2="730" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 10 -->
+  <circle cx="70" cy="792" r="16" fill="#059669"/>
+  <text x="70" y="797" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">10</text>
+  <rect x="100" y="770" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="790" font-size="12" font-weight="600" fill="#B45309">TASK_EXECUTE_FIXES picks approved proposals</text>
+  <text x="116" y="806" font-size="10" fill="#64748B">SP_EXECUTE_APPROVED_FIXES() � STATUS = APPROVED, PR_URL is NULL</text>
+  <line x1="360" y1="814" x2="360" y2="830" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 11 -->
+  <circle cx="70" cy="852" r="16" fill="#059669"/>
+  <text x="70" y="857" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">11</text>
+  <rect x="100" y="830" width="570" height="44" rx="6" fill="#1E293B" stroke="#475569" filter="url(#shadow)"/>
+  <text x="116" y="850" font-size="12" font-weight="600" fill="#F8FAFC">Agent creates Bug then PR</text>
+  <text x="116" y="866" font-size="10" fill="#94A3B8">CreateBug � GitCreatePR � branch: fix/proposal-{id}</text>
+  <line x1="360" y1="874" x2="360" y2="890" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 12 -->
+  <circle cx="70" cy="912" r="16" fill="#059669"/>
+  <text x="70" y="917" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">12</text>
+  <rect x="100" y="890" width="570" height="44" rx="6" fill="#FFFFFF" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <text x="116" y="910" font-size="12" font-weight="600" fill="#0078D4">Done  STATUS = APPLIED</text>
+  <text x="116" y="926" font-size="10" fill="#64748B">BUG_ID + PR_URL saved � Teams notified: "PR #X created for Bug #Y"</text>
+
+  <!-- Key rule box -->
+  <rect x="30" y="960" width="660" height="56" rx="6" fill="#FFF7ED" stroke="#F97316"/>
+  <text x="50" y="982" font-size="11" font-weight="700" fill="#C2410C">Key rule</text>
+  <text x="50" y="1000" font-size="10" fill="#9A3412">AGENT_FIX_PROPOSALS only ever holds human-approved plans. No auto-apply without approval.</text>
+
+  <text x="360" y="1040" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �2 Data Flow � 2026-06-17</text>
+</svg>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="520" fill="#F8FAFC"/>
+
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Data Model  Tables &amp; Relationships</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">What each table stores and how they connect</text>
+
+  <!-- Source tables -->
+  <rect x="40" y="90" width="200" height="120" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2" filter="url(#shadow)"/>
+  <text x="140" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Source tables</text>
+  <text x="140" y="132" text-anchor="middle" font-size="9" fill="#64748B">(already exist)</text>
+  <line x1="60" y1="142" x2="220" y2="142" stroke="#E2E8F0"/>
+  <text x="60" y="160" font-size="9" fill="#475569">JOB_CONTROL_LOG</text>
+  <text x="60" y="176" font-size="9" fill="#475569">LOG_STEPS</text>
+  <text x="60" y="192" font-size="9" fill="#475569">DATA_AUDIT_LOG</text>
+
+  <line x1="240" y1="150" x2="278" y2="150" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="259" y="142" text-anchor="middle" font-size="8" fill="#64748B">query</text>
+
+  <!-- AGENT_ALERTS -->
+  <rect x="280" y="100" width="180" height="100" rx="8" fill="#FFFFFF" stroke="#64748B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="370" y="124" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">AGENT_ALERTS</text>
+  <text x="370" y="142" text-anchor="middle" font-size="9" fill="#64748B">Audit log of detections</text>
+  <line x1="300" y1="152" x2="440" y2="152" stroke="#E2E8F0"/>
+  <text x="300" y="168" font-size="8" fill="#475569">ALERT_ID (PK)</text>
+  <text x="300" y="182" font-size="8" fill="#475569">ALERT_TYPE, SEVERITY</text>
+  <text x="300" y="196" font-size="8" fill="#475569">AGENT_INVOKED, TEAMS_SENT</text>
+
+  <!-- FK arrow to suggestions -->
+  <line x1="370" y1="200" x2="370" y2="248" stroke="#D97706" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="382" y="228" font-size="8" fill="#D97706">ALERT_ID FK</text>
+
+  <!-- AGENT_SUGGESTIONS -->
+  <rect x="280" y="250" width="180" height="120" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="370" y="274" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">AGENT_SUGGESTIONS</text>
+  <text x="370" y="292" text-anchor="middle" font-size="9" fill="#78350F">Working drafts</text>
+  <line x1="300" y1="302" x2="440" y2="302" stroke="#FDE68A"/>
+  <text x="300" y="318" font-size="8" fill="#78350F">SUGGESTION_ID (PK)</text>
+  <text x="300" y="332" font-size="8" fill="#78350F">ROOT_CAUSE, FIX_CODE</text>
+  <text x="300" y="346" font-size="8" fill="#78350F">STATUS = DRAFT</text>
+  <text x="300" y="360" font-size="8" fill="#78350F">REVISION_COUNT</text>
+
+  <!-- Human approval -->
+  <rect x="500" y="280" width="120" height="60" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+  <text x="560" y="304" text-anchor="middle" font-size="10" font-weight="600" fill="#5B21B6">Human</text>
+  <text x="560" y="320" text-anchor="middle" font-size="9" fill="#6D28D9">approves</text>
+
+  <line x1="460" y1="310" x2="498" y2="310" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="620" y1="310" x2="658" y2="310" stroke="#059669" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- AGENT_FIX_PROPOSALS -->
+  <rect x="660" y="250" width="200" height="120" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text x="760" y="274" text-anchor="middle" font-size="11" font-weight="700" fill="#065F46">AGENT_FIX_PROPOSALS</text>
+  <text x="760" y="292" text-anchor="middle" font-size="9" fill="#047857">Approved � immutable</text>
+  <line x1="680" y1="302" x2="840" y2="302" stroke="#A7F3D0"/>
+  <text x="680" y="318" font-size="8" fill="#047857">PROPOSAL_ID (PK)</text>
+  <text x="680" y="332" font-size="8" fill="#047857">SUGGESTION_ID (FK)</text>
+  <text x="680" y="346" font-size="8" fill="#047857">APPROVED_BY, APPROVED_AT</text>
+  <text x="680" y="360" font-size="8" fill="#047857">BUG_ID, PR_URL, STATUS</text>
+
+  <!-- Execute arrow -->
+  <line x1="760" y1="370" x2="760" y2="408" stroke="#059669" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- External -->
+  <rect x="660" y="410" width="200" height="56" rx="8" fill="#FFFFFF" stroke="#0078D4" stroke-width="2" filter="url(#shadow)"/>
+  <text x="760" y="434" text-anchor="middle" font-size="11" font-weight="600" fill="#0078D4">Azure DevOps</text>
+  <text x="760" y="452" text-anchor="middle" font-size="9" fill="#64748B">Bug work item + Git PR</text>
+
+  <!-- Status flow -->
+  <rect x="40" y="400" width="380" height="100" rx="8" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="60" y="424" font-size="12" font-weight="700" fill="#334155">Status progression</text>
+
+  <rect x="60" y="438" width="100" height="24" rx="4" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="110" y="454" text-anchor="middle" font-size="9" fill="#92400E">DRAFT</text>
+  <text x="170" y="454" font-size="12" fill="#94A3B8">�</text>
+  <rect x="180" y="438" width="100" height="24" rx="4" fill="#D1FAE5" stroke="#059669"/>
+  <text x="230" y="454" text-anchor="middle" font-size="9" fill="#065F46">APPROVED</text>
+  <text x="290" y="454" font-size="12" fill="#94A3B8">�</text>
+  <rect x="300" y="438" width="100" height="24" rx="4" fill="#DBEAFE" stroke="#2563EB"/>
+  <text x="350" y="454" text-anchor="middle" font-size="9" fill="#1D4ED8">APPLIED</text>
+
+  <text x="60" y="480" font-size="9" fill="#64748B">DRAFT lives in SUGGESTIONS � APPROVED/APPLIED live in PROPOSALS</text>
+  <text x="60" y="494" font-size="9" fill="#DC2626">Reject at DRAFT � row deleted, never reaches PROPOSALS</text>
+
+  <text x="450" y="512" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �3 Table DDL � 2026-06-17</text>
+</svg>

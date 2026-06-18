@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#059669"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="700" fill="#F8FAFC"/>
+
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0F172A">Three Snowflake Tasks</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#64748B">Scheduled jobs that run the self-healing pipeline</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="100" x2="820" y2="100" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="80" y="90" font-size="10" fill="#64748B">Time �</text>
+
+  <circle cx="180" cy="100" r="8" fill="#D97706"/>
+  <text x="180" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#D97706">60 min</text>
+
+  <circle cx="450" cy="100" r="8" fill="#7C3AED"/>
+  <text x="450" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#7C3AED">2 hrs</text>
+
+  <circle cx="720" cy="100" r="8" fill="#059669"/>
+  <text x="720" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">30 min</text>
+
+  <!-- Task 1 -->
+  <rect x="40" y="130" width="260" height="280" rx="8" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="40" y="130" width="260" height="36" rx="8" fill="#FEF3C7"/>
+  <rect x="40" y="154" width="260" height="12" fill="#FEF3C7"/>
+  <text x="170" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#B45309">TASK 1  DETECT</text>
+
+  <text x="56" y="186" font-size="11" font-weight="600" fill="#334155">TASK_DETECT_FAILURES</text>
+  <text x="56" y="204" font-size="10" fill="#64748B">Schedule: every 60 minutes</text>
+  <text x="56" y="222" font-size="10" fill="#64748B">Calls: SP_DETECT_AND_ALERT()</text>
+
+  <line x1="56" y1="234" x2="284" y2="234" stroke="#E2E8F0"/>
+
+  <text x="56" y="252" font-size="10" font-weight="600" fill="#334155">What it does:</text>
+  <text x="56" y="270" font-size="10" fill="#475569">` Query JOB_CONTROL_LOG + LOG_STEPS</text>
+  <text x="56" y="286" font-size="10" fill="#475569">a INSERT into AGENT_ALERTS</text>
+  <text x="56" y="302" font-size="10" fill="#475569">b Call DATA_AGENT_RUN (agent)</text>
+  <text x="56" y="318" font-size="10" fill="#475569">c UPSERT AGENT_SUGGESTIONS (DRAFT)</text>
+  <text x="56" y="334" font-size="10" fill="#475569">d Send immediate Teams alert</text>
+
+  <rect x="56" y="350" width="228" height="48" rx="4" fill="#FFFFFF" stroke="#D97706"/>
+  <text x="170" y="370" text-anchor="middle" font-size="9" font-weight="600" fill="#92400E">Output</text>
+  <text x="170" y="386" text-anchor="middle" font-size="9" fill="#78350F">Draft fixes ready for review</text>
+
+  <!-- Task 2 -->
+  <rect x="320" y="130" width="260" height="280" rx="8" fill="#FAF5FF" stroke="#7C3AED" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="320" y="130" width="260" height="36" rx="8" fill="#EDE9FE"/>
+  <rect x="320" y="154" width="260" height="12" fill="#EDE9FE"/>
+  <text x="450" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#5B21B6">TASK 2  POLL</text>
+
+  <text x="336" y="186" font-size="11" font-weight="600" fill="#334155">TASK_POLL_APPROVALS</text>
+  <text x="336" y="204" font-size="10" fill="#64748B">Schedule: every 2 hours</text>
+  <text x="336" y="222" font-size="10" fill="#64748B">Calls: SP_POLL_PENDING_SUGGESTIONS()</text>
+
+  <line x1="336" y1="234" x2="564" y2="234" stroke="#E2E8F0"/>
+
+  <text x="336" y="252" font-size="10" font-weight="600" fill="#334155">What it does:</text>
+  <text x="336" y="270" font-size="10" fill="#475569">` SELECT DRAFT rows from SUGGESTIONS</text>
+  <text x="336" y="286" font-size="10" fill="#475569">a Bundle into structured Teams message</text>
+  <text x="336" y="302" font-size="10" fill="#475569">b Send [Approve] [Reject] per item</text>
+  <text x="336" y="318" font-size="10" fill="#475569">c Human acts via Teams / Streamlit / SQL</text>
+  <text x="336" y="334" font-size="10" fill="#475569">d On approve � move to PROPOSALS</text>
+
+  <rect x="336" y="350" width="228" height="48" rx="4" fill="#FFFFFF" stroke="#7C3AED"/>
+  <text x="450" y="370" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">Output</text>
+  <text x="450" y="386" text-anchor="middle" font-size="9" fill="#6D28D9">Human-approved proposals</text>
+
+  <!-- Task 3 -->
+  <rect x="600" y="130" width="260" height="280" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="600" y="130" width="260" height="36" rx="8" fill="#D1FAE5"/>
+  <rect x="600" y="154" width="260" height="12" fill="#D1FAE5"/>
+  <text x="730" y="153" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">TASK 3  EXECUTE</text>
+
+  <text x="616" y="186" font-size="11" font-weight="600" fill="#334155">TASK_EXECUTE_FIXES</text>
+  <text x="616" y="204" font-size="10" fill="#64748B">Schedule: every 30 minutes</text>
+  <text x="616" y="222" font-size="10" fill="#64748B">Calls: SP_EXECUTE_APPROVED_FIXES()</text>
+
+  <line x1="616" y1="234" x2="844" y2="234" stroke="#E2E8F0"/>
+
+  <text x="616" y="252" font-size="10" font-weight="600" fill="#334155">What it does:</text>
+  <text x="616" y="270" font-size="10" fill="#475569">` SELECT APPROVED (no PR yet)</text>
+  <text x="616" y="286" font-size="10" fill="#475569">a Agent � SP_CREATE_AZURE_DEVOPS_BUG</text>
+  <text x="616" y="302" font-size="10" fill="#475569">b Agent � SP_GIT_CREATE_PR</text>
+  <text x="616" y="318" font-size="10" fill="#475569">c UPDATE: STATUS=APPLIED, PR_URL</text>
+  <text x="616" y="334" font-size="10" fill="#475569">d Notify Teams: PR + Bug created</text>
+
+  <rect x="616" y="350" width="228" height="48" rx="4" fill="#FFFFFF" stroke="#059669"/>
+  <text x="730" y="370" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">Output</text>
+  <text x="730" y="386" text-anchor="middle" font-size="9" fill="#047857">Bug + PR in Azure DevOps</text>
+
+  <!-- Flow arrows between tasks -->
+  <path d="M 300 280 L 318 280" fill="none" stroke="#D97706" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="309" y="272" text-anchor="middle" font-size="9" fill="#D97706">drafts</text>
+
+  <path d="M 580 280 L 598 280" fill="none" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <text x="589" y="272" text-anchor="middle" font-size="9" fill="#7C3AED">approved</text>
+
+  <!-- Data stores row -->
+  <rect x="40" y="440" width="820" height="200" rx="8" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="60" y="466" font-size="13" font-weight="700" fill="#334155">Tables each task reads / writes</text>
+
+  <!-- Task 1 tables -->
+  <text x="170" y="492" text-anchor="middle" font-size="10" font-weight="600" fill="#B45309">Task 1</text>
+  <rect x="70" y="502" width="90" height="28" rx="4" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="115" y="520" text-anchor="middle" font-size="8" fill="#475569">JOB_CONTROL_LOG</text>
+  <rect x="70" y="536" width="90" height="28" rx="4" fill="#F1F5F9" stroke="#94A3B8"/>
+  <text x="115" y="554" text-anchor="middle" font-size="8" fill="#475569">LOG_STEPS</text>
+  <text x="170" y="580" text-anchor="middle" font-size="9" fill="#64748B">reads �</text>
+  <rect x="120" y="590" width="100" height="28" rx="4" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="170" y="608" text-anchor="middle" font-size="8" fill="#92400E">AGENT_SUGGESTIONS</text>
+  <text x="170" y="624" text-anchor="middle" font-size="8" fill="#64748B">writes �</text>
+
+  <!-- Task 2 tables -->
+  <text x="450" y="492" text-anchor="middle" font-size="10" font-weight="600" fill="#5B21B6">Task 2</text>
+  <rect x="380" y="510" width="140" height="28" rx="4" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="450" y="528" text-anchor="middle" font-size="8" fill="#92400E">AGENT_SUGGESTIONS (read)</text>
+  <text x="450" y="556" text-anchor="middle" font-size="9" fill="#64748B">human approves �</text>
+  <rect x="380" y="566" width="140" height="28" rx="4" fill="#D1FAE5" stroke="#059669"/>
+  <text x="450" y="584" text-anchor="middle" font-size="8" fill="#065F46">AGENT_FIX_PROPOSALS (write)</text>
+
+  <!-- Task 3 tables -->
+  <text x="730" y="492" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">Task 3</text>
+  <rect x="660" y="510" width="140" height="28" rx="4" fill="#D1FAE5" stroke="#059669"/>
+  <text x="730" y="528" text-anchor="middle" font-size="8" fill="#065F46">AGENT_FIX_PROPOSALS (read)</text>
+  <text x="730" y="556" text-anchor="middle" font-size="9" fill="#64748B">agent executes �</text>
+  <rect x="680" y="566" width="100" height="28" rx="4" fill="#FFFFFF" stroke="#0078D4" stroke-width="2"/>
+  <text x="730" y="584" text-anchor="middle" font-size="8" fill="#0078D4">Azure DevOps</text>
+  <text x="730" y="608" text-anchor="middle" font-size="8" fill="#64748B">Bug + PR created</text>
+
+  <!-- Note -->
+  <rect x="40" y="660" width="820" height="28" rx="4" fill="#EFF6FF" stroke="#3B82F6"/>
+  <text x="450" y="678" text-anchor="middle" font-size="10" fill="#1D4ED8">All three tasks run independently on their own schedule inside ELT_STAGEDB.LOGGING</text>
+
+  <text x="450" y="696" text-anchor="middle" font-size="9" fill="#94A3B8">sentinel/plan.md �1 &amp; �7 � 2026-06-17</text>
+</svg>

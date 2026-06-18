@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" font-family="Segoe UI, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#059669"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#0078D4"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#94A3B8" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="780" fill="#F8FAFC"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" font-size="24" font-weight="700" fill="#0F172A">Self-Healing Pipeline Agent</text>
+  <text x="550" y="58" text-anchor="middle" font-size="13" fill="#64748B">Detect failures → Human reviews draft fixes → Create bug + PR</text>
+
+  <!-- Snowflake boundary -->
+  <rect x="24" y="78" width="1052" height="580" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2" stroke-dasharray="8,5"/>
+  <text x="44" y="102" font-size="13" font-weight="700" fill="#1D4ED8">SNOWFLAKE — ELT_STAGEDB.LOGGING</text>
+
+  <!-- Phase headers -->
+  <rect x="44" y="118" width="310" height="40" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <text x="199" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="#92400E">① DETECT</text>
+  <text x="199" y="152" text-anchor="middle" font-size="10" fill="#B45309">every 60 min</text>
+
+  <rect x="374" y="118" width="310" height="40" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="529" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="#5B21B6">② REVIEW</text>
+  <text x="529" y="152" text-anchor="middle" font-size="10" fill="#6D28D9">human approval gate</text>
+
+  <rect x="704" y="118" width="352" height="40" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="880" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">③ EXECUTE</text>
+  <text x="880" y="152" text-anchor="middle" font-size="10" fill="#047857">every 30 min</text>
+
+  <!-- PHASE 1: DETECT -->
+  <rect x="44" y="168" width="310" height="72" rx="6" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="60" y="190" font-size="12" font-weight="600" fill="#334155">Source tables</text>
+  <text x="60" y="208" font-size="10" fill="#64748B">JOB_CONTROL_LOG · LOG_STEPS · DATA_AUDIT_LOG</text>
+  <text x="60" y="226" font-size="10" fill="#64748B">Failures, long-running jobs, data gaps</text>
+
+  <line x1="199" y1="240" x2="199" y2="258" stroke="#D97706" stroke-width="2" marker-end="url(#arrow-orange)"/>
+
+  <rect x="44" y="260" width="310" height="118" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="60" y="282" font-size="12" font-weight="700" fill="#B45309">TASK_DETECT_FAILURES</text>
+  <text x="60" y="300" font-size="10" fill="#64748B">SP_DETECT_AND_ALERT()</text>
+  <text x="60" y="320" font-size="10" fill="#334155">1. Query source tables for issues</text>
+  <text x="60" y="336" font-size="10" fill="#334155">2. Log alert → AGENT_ALERTS</text>
+  <text x="60" y="352" font-size="10" fill="#334155">3. Call Cortex agent to analyze errors</text>
+  <text x="60" y="368" font-size="10" fill="#334155">4. Save draft fix → AGENT_SUGGESTIONS</text>
+
+  <line x1="199" y1="378" x2="199" y2="396" stroke="#D97706" stroke-width="2" marker-end="url(#arrow-orange)"/>
+
+  <rect x="44" y="398" width="310" height="58" rx="6" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="199" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#92400E">AGENT_SUGGESTIONS</text>
+  <text x="199" y="438" text-anchor="middle" font-size="10" fill="#78350F">Working drafts · STATUS = DRAFT</text>
+  <text x="199" y="452" text-anchor="middle" font-size="9" fill="#78350F">Agent can revise same row on feedback</text>
+
+  <!-- Cortex Agent (shared) -->
+  <rect x="374" y="260" width="310" height="100" rx="6" fill="#1E293B" stroke="#475569" stroke-width="2" filter="url(#shadow)"/>
+  <text x="529" y="284" text-anchor="middle" font-size="13" font-weight="700" fill="#F8FAFC">JOB_MONITOR_AGENT</text>
+  <text x="529" y="302" text-anchor="middle" font-size="10" fill="#94A3B8">Snowflake Cortex Agent</text>
+  <text x="390" y="322" font-size="10" fill="#CBD5E1">Tools: QueryJobs · SendAlert · CreateBug · GitCreatePR · code_execution</text>
+  <text x="390" y="340" font-size="9" fill="#64748B" font-style="italic">Never applies fixes without human approval</text>
+
+  <!-- Arrow Task1 -> Agent -->
+  <path d="M 354 319 L 372 310" fill="none" stroke="#2563EB" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <!-- Arrow Agent -> Suggestions -->
+  <path d="M 354 300 L 310 420" fill="none" stroke="#D97706" stroke-width="1.5" marker-end="url(#arrow-orange)"/>
+
+  <!-- PHASE 2: REVIEW -->
+  <rect x="374" y="398" width="310" height="58" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2" filter="url(#shadow)"/>
+  <text x="529" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#5B21B6">Human reviews fix</text>
+  <text x="529" y="438" text-anchor="middle" font-size="10" fill="#6D28D9">Teams · Streamlit · SQL</text>
+  <text x="529" y="452" text-anchor="middle" font-size="9" fill="#6D28D9">Approve · Reject · Request revision</text>
+
+  <line x1="354" y1="427" x2="372" y2="427" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+  <rect x="374" y="478" width="310" height="88" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="390" y="500" font-size="12" font-weight="700" fill="#B45309">TASK_POLL_APPROVALS</text>
+  <text x="390" y="518" font-size="10" fill="#64748B">every 2 hrs · SP_POLL_PENDING_SUGGESTIONS()</text>
+  <text x="390" y="536" font-size="10" fill="#334155">Bundles pending drafts into Teams message</text>
+  <text x="390" y="552" font-size="10" fill="#334155">[Approve] [Reject] buttons per suggestion</text>
+
+  <!-- Revision loop -->
+  <path d="M 529 456 L 529 476" fill="none" stroke="#7C3AED" stroke-width="1.5" marker-end="url(#arrow-purple)"/>
+  <path d="M 390 427 L 310 427" fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-purple)"/>
+  <text x="340" y="418" font-size="9" fill="#7C3AED">revise</text>
+
+  <!-- Reject path -->
+  <path d="M 450 456 L 310 456" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+  <text x="380" y="448" font-size="9" fill="#DC2626">reject → delete draft</text>
+
+  <!-- Approve arrow to Phase 3 -->
+  <line x1="684" y1="427" x2="702" y2="427" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <text x="693" y="418" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">approve</text>
+
+  <!-- PHASE 3: EXECUTE -->
+  <rect x="704" y="398" width="352" height="58" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="2" filter="url(#shadow)"/>
+  <text x="880" y="420" text-anchor="middle" font-size="12" font-weight="700" fill="#065F46">AGENT_FIX_PROPOSALS</text>
+  <text x="880" y="438" text-anchor="middle" font-size="10" fill="#047857">Approved plans only · immutable</text>
+  <text x="880" y="452" text-anchor="middle" font-size="9" fill="#047857">Moved here only after human approves</text>
+
+  <line x1="880" y1="456" x2="880" y2="474" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="704" y="476" width="352" height="100" rx="6" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="720" y="498" font-size="12" font-weight="700" fill="#B45309">TASK_EXECUTE_FIXES</text>
+  <text x="720" y="516" font-size="10" fill="#64748B">SP_EXECUTE_APPROVED_FIXES()</text>
+  <text x="720" y="534" font-size="10" fill="#334155">1. Pick approved proposals (no PR yet)</text>
+  <text x="720" y="550" font-size="10" fill="#334155">2. Agent creates Azure DevOps bug + Git PR</text>
+  <text x="720" y="566" font-size="10" fill="#334155">3. STATUS → APPLIED · notify Teams</text>
+
+  <!-- Arrow Task3 -> Agent -->
+  <path d="M 704 526 L 684 340" fill="none" stroke="#2563EB" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- External systems -->
+  <rect x="24" y="678" width="1052" height="88" rx="8" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="44" y="702" font-size="12" font-weight="700" fill="#334155">External systems</text>
+
+  <rect x="44" y="714" width="240" height="42" rx="6" fill="#FFFFFF" stroke="#0078D4" stroke-width="2"/>
+  <text x="164" y="733" text-anchor="middle" font-size="12" font-weight="600" fill="#0078D4">Microsoft Teams</text>
+  <text x="164" y="748" text-anchor="middle" font-size="9" fill="#64748B">Failure alerts · approval requests · PR notifications</text>
+
+  <rect x="320" y="714" width="240" height="42" rx="6" fill="#FFFFFF" stroke="#0078D4" stroke-width="2"/>
+  <text x="440" y="733" text-anchor="middle" font-size="12" font-weight="600" fill="#0078D4">Azure DevOps</text>
+  <text x="440" y="748" text-anchor="middle" font-size="9" fill="#64748B">Bug work items · Git repos · pull requests</text>
+
+  <!-- Arrows to external -->
+  <path d="M 529 566 L 529 628 L 164 628 L 164 712" fill="none" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="340" y="622" font-size="9" fill="#0078D4">Teams alerts</text>
+  <path d="M 880 576 L 880 628 L 440 628 L 440 712" fill="none" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="660" y="622" font-size="9" fill="#0078D4">Bug + PR</text>
+
+  <!-- Two-table callout -->
+  <rect x="704" y="168" width="352" height="78" rx="6" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#shadow)"/>
+  <text x="720" y="190" font-size="11" font-weight="700" fill="#334155">Two-table design</text>
+  <text x="720" y="210" font-size="10" fill="#64748B">AGENT_SUGGESTIONS = drafts (revisable, deleted on reject)</text>
+  <text x="720" y="228" font-size="10" fill="#64748B">AGENT_FIX_PROPOSALS = approved only (triggers bug + PR)</text>
+  <text x="720" y="244" font-size="9" fill="#94A3B8" font-style="italic">Key rule: proposals table never holds unapproved fixes</text>
+
+  <!-- AGENT_ALERTS small box -->
+  <rect x="44" y="478" width="140" height="44" rx="6" fill="#FFFFFF" stroke="#94A3B8"/>
+  <text x="114" y="498" text-anchor="middle" font-size="10" font-weight="600" fill="#334155">AGENT_ALERTS</text>
+  <text x="114" y="514" text-anchor="middle" font-size="9" fill="#64748B">Audit log</text>
+  <line x1="199" y1="336" x2="184" y2="478" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <rect x="44" y="540" width="310" height="100" rx="6" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="60" y="560" font-size="11" font-weight="700" fill="#334155">Legend</text>
+  <rect x="60" y="572" width="14" height="14" rx="2" fill="#FEF3C7" stroke="#D97706"/>
+  <text x="82" y="583" font-size="10" fill="#64748B">Draft / detection</text>
+  <rect x="60" y="594" width="14" height="14" rx="2" fill="#EDE9FE" stroke="#7C3AED"/>
+  <text x="82" y="605" font-size="10" fill="#64748B">Human approval gate</text>
+  <rect x="60" y="616" width="14" height="14" rx="2" fill="#D1FAE5" stroke="#059669"/>
+  <text x="82" y="627" font-size="10" fill="#64748B">Approved / executed</text>
+  <rect x="200" y="572" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+  <text x="222" y="583" font-size="10" fill="#64748B">Scheduled task</text>
+  <rect x="200" y="594" width="14" height="14" rx="2" fill="#1E293B"/>
+  <text x="222" y="605" font-size="10" fill="#64748B">Cortex agent</text>
+  <rect x="200" y="616" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#0078D4" stroke-width="2"/>
+  <text x="222" y="627" font-size="10" fill="#64748B">External system</text>
+
+  <text x="550" y="768" text-anchor="middle" font-size="9" fill="#94A3B8">ELT_STAGEDB.LOGGING · plan.md · 2026-06-17 · Data Engineering Team</text>
+</svg>
